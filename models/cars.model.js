@@ -1,14 +1,5 @@
 const sql = require('../database/db.js');
 
-// const Car = function(name,model,year,price,home_image_display_link){
-//     this.name = name;
-//     this.model = model;
-//     this.year = year;
-//     this.price = price;
-//     this.home_image_display_link = home_image_display_link;
-// }
-// let newCar = new Car;
-
 const Car = function(car){
     this.name = car.name;
     this.model = car.model;

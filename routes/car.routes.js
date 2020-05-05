@@ -10,5 +10,4 @@ module.exports = (app) => {
     app.put('/car/:carId', Car.update);
 
     app.delete('/car/:carId', Car.remove);
-
 }

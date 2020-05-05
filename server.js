@@ -12,6 +12,8 @@ app.get('/', (req, res) => {
 })
 
 require('./routes/car.routes.js')(app);
+require('./routes/order.routes.js')(app);
+require('./routes/shoppingCart.router.js')(app);
 
 app.listen(2500, () => {
     console.log("....running on port 2500")
