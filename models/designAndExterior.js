@@ -1,34 +1,36 @@
 const sql = require("../database/db.js");
 
-const Car = function (car) {
-  this.name = car.name;
-  this.price = car.price;
-  this.model = car.model;
-  this.year = car.year;
-  this.fuel = car.fuel;
-  this.transmission = car.transmission;
-  this.engine = car.engine;
-  this.homePageImageDisplay = car.homePageImageDisplay;
-  this.productPageCarousel_1 = car.productPageCarousel_1;
-  this.productPageCarousel_2 = car.productPageCarousel_2;
-  this.productPageCarousel_3 = car.productPageCarousel_3;
-  this.productPageCarousel_4 = car.productPageCarousel_4;
-  this.productPageCarousel_5 = car.productPageCarousel_5;
+const DesignAndInterior = function (dAndT) {
+  this.vehicles_id = car.name;
+  this.id_1 = dAndT.id_1;
+  this.id_2 = dAndT.id_2;
+  this.id_3 = dAndT.id_3;
+  this.id_4 = dAndT.id_4;
+  this.id_5 = dAndT.id_5;
+  this.id_6 = dAndT.id_6;
+  this.id_7 = dAndT.id_7;
+  this.info_1 = dAndT.info_1;
+  this.info_2 = dAndT.info_2;
+  this.info_3 = dAndT.info_3;
+  this.info_4 = dAndT.info_4;
+  this.info_5 = dAndT.info_5;
+  this.info_6 = dAndT.info_6;
+  this.info_7 = dAndT.info_7;
 };
 
-Car.create = (newCar, result) => {
-  sql.query(`INSERT INTO vehicles SET?`, newCar, (err, res) => {
+DesignAndInterior.create = (newDAndT, result) => {
+  sql.query(`INSERT INTO design_and_exterior SET?`, newDAndT, (err, res) => {
     if (err) {
       console.log(`error: ${err}`);
       result(err, null);
       return;
     }
-    console.log("Car added: ", { id: res.insertId, ...newCar });
-    result(null, { id: res.insertId, ...newCar });
+    console.log("Design and Interior added: ", { id: res.insertId, ...newDAndT });
+    result(null, { id: res.insertId, ...newDAndT });
   });
 };
 
-Car.viewOne = (carId, result) => {
+DesignAndInterior.viewOne = (carId, result) => {
   sql.query(`SELECT * FROM vehicles WHERE id=${carId}`, (err, res) => {
     if (err) {
       console.log(`error: ${err}`);
@@ -43,40 +45,19 @@ Car.viewOne = (carId, result) => {
   });
 };
 
-// Car.viewAll = (result) => {
-//   sql.query(`SELECT * FROM vehicles`, (err, res) => {
-//     if (err) {
-//       console.log(`err: ${err}`);
-//       result(err, null);
-//       return;
-//     }
-
-//     console.log(`Available Cars: ${result}`);
-
-//     result(null, res);
-//   });
-// };
-
 Car.viewAll = (result) => {
-    sql.query(
-        // `SELECT * FROM vehicles
-        // `, 
-        `SELECT *
-        FROM vehicles
-        JOIN design_and_exterior ON vehicles.id = design_and_exterior.vehicles_id`,
-        (err, res) => {
-      if (err) {
-        console.log(`err: ${err}`);
-        result(err, null);
-        return;
-      }
-  
-      console.log(`Available Cars: ${res}`);
-  
-      result(null, res);
-    });
-  };
+  sql.query(`SELECT * FROM vehicles`, (err, res) => {
+    if (err) {
+      console.log(`err: ${err}`);
+      result(err, null);
+      return;
+    }
 
+    console.log(`Available Cars: ${result}`);
+
+    result(null, res);
+  });
+};
 
 Car.update = (carId, carUpdateInfo, result) => {
   sql.query(

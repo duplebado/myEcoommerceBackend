@@ -1,6 +1,6 @@
 module.exports = {
     Host: 'host',
     user: 'root',
-    password: '',
-    db: ''
+    password: 'jidiamond1reset2',
+    db: 'gbogbonise'
 }
