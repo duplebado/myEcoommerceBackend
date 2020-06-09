@@ -23,14 +23,14 @@ User.create = (newUser, result) => {
 };
 
 User.viewOne = (userEmail, result) => {
-  sql.query(`SELECT * FROM users WHERE email=${userEmail}`, (err, res) => {
+  sql.query(`SELECT * FROM users WHERE email="${userEmail}"`, (err, res) => {
     if (err) {
       console.log(`error: ${err}`);
       result(err, null);
       return;
     }
     if (res.length) {
-      console.log(`User found: ${res[0]}`);
+      console.log(`User found: ${JSON.stringify(res)}`);
       result(null, res);
     }
     result({ kind: "not_found" }, null);
@@ -46,6 +46,22 @@ User.viewAll = (result) => {
     }
 
     console.log(`Available Users: ${result}`);
+    result(null, res);
+  });
+};
+
+User.remove = (email, result) => {
+  sql.query(`DELETE FROM users WHERE email="${email}"`, (err, res) => {
+    if (err) {
+      console.log(`error: ${err}`);
+      result(err, null);
+      return;
+    }
+    if (res.affectedRows == 0) {
+      result({ kind: "not_found" }, null);
+      return;
+    }
+    console.log("Deleted User: ");
     result(null, res);
   });
 };
@@ -103,22 +119,6 @@ User.viewAll = (result) => {
 //       result(null, { id: carId, ...carUpdateInfo });
 //     }
 //   );
-// };
-
-// Car.remove = (carId, result) => {
-//   sql.query(`DELETE FROM vehicles WHERE id=${carId}`, (err, res) => {
-//     if (err) {
-//       console.log(`error: ${err}`);
-//       result(err, null);
-//       return;
-//     }
-//     if (res.affectedRows == 0) {
-//       result({ kind: "not_found" }, null);
-//       return;
-//     }
-//     console.log("Deleted Product: ");
-//     result(null, res);
-//   });
 // };
 
 module.exports = User;

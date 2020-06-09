@@ -14,6 +14,7 @@ const Car = function (car) {
   this.productPageCarousel_3 = car.productPageCarousel_3;
   this.productPageCarousel_4 = car.productPageCarousel_4;
   this.productPageCarousel_5 = car.productPageCarousel_5;
+  // this.category = car.category;
 };
 
 Car.create = (newCar, result) => {
@@ -58,25 +59,25 @@ Car.viewOne = (carId, result) => {
 // };
 
 Car.viewAll = (result) => {
-    sql.query(
-        // `SELECT * FROM vehicles
-        // `, 
-        `SELECT *
+  sql.query(
+    // `SELECT * FROM vehicles
+    // `,
+    `SELECT *
         FROM vehicles
         JOIN design_and_exterior ON vehicles.id = design_and_exterior.vehicles_id`,
-        (err, res) => {
+    (err, res) => {
       if (err) {
         console.log(`err: ${err}`);
         result(err, null);
         return;
       }
-  
-      console.log(`Available Cars: ${res}`);
-  
-      result(null, res);
-    });
-  };
 
+      console.log(`Available Cars: ${res}`);
+
+      result(null, res);
+    }
+  );
+};
 
 Car.update = (carId, carUpdateInfo, result) => {
   sql.query(

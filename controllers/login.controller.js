@@ -1,4 +1,4 @@
-const checkAttempt = require("../models/dashboard.model.js");
+const checkAttempt = require("../models/login.model.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -17,7 +17,7 @@ const check = (req, res) => {
     console.log(attempt["email"]);
     if (err)
       res.status(401).send({
-        message: "invalid login details",
+        message: "invalid email login details",
       });
     else {
       // res.status(200).json(data);
@@ -47,7 +47,7 @@ const check = (req, res) => {
           });
         } else {
           res.status(401).send({
-            message: "invalid login details",
+            message: "invalid password login details",
           });
         }
       });

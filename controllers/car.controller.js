@@ -21,6 +21,7 @@ const create = (req, res) => {
     productPageCarousel_3: req.files[3].path,
     productPageCarousel_4: req.files[4].path,
     productPageCarousel_5: req.files[5].path,
+    // category: req.body.category,
     // productPageCarousel_1: req.body.productPageCarousel_1,
     // productPageCarousel_2: req.body.productPageCarousel_2,
     // productPageCarousel_3: req.body.productPageCarousel_3,
@@ -75,7 +76,6 @@ const update = (req, res) => {
   }
 
   Car.update(req.params.carId, new Car(req.body), (err, data) => {
-
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
