@@ -18,7 +18,6 @@ const Car = function (car) {
   this.categoryLink = car.categoryLink;
 };
 
-console.log("Hello");
 Car.create = (newCar, result) => {
   sql.query(`INSERT INTO vehicles SET?`, newCar, (err, res) => {
     if (err) {
