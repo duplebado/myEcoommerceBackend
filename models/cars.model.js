@@ -14,7 +14,8 @@ const Car = function (car) {
   this.productPageCarousel_3 = car.productPageCarousel_3;
   this.productPageCarousel_4 = car.productPageCarousel_4;
   this.productPageCarousel_5 = car.productPageCarousel_5;
-  // this.category = car.category;
+  this.category = car.category;
+  this.categoryLink = car.categoryLink;
 };
 
 Car.create = (newCar, result) => {
