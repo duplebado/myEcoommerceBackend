@@ -33,6 +33,8 @@ require("./routes/shoppingCart.router.js")(app);
 require("./routes/createAccount.routes.js")(app);
 require("./routes/login.routes.js")(app);
 
-app.listen(2500, () => {
+const PORT = process.env.PORT || 2500;
+
+app.listen(PORT, () => {
   console.log("....running on port 2500");
 });
