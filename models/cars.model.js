@@ -59,14 +59,14 @@ Car.viewOne = (carId, result) => {
 //     result(null, res);
 //   });
 // };
+// JOIN design_and_exterior ON vehicles.id = design_and_exterior.vehicles_id`,
 
 Car.viewAll = (result) => {
   sql.query(
     // `SELECT * FROM vehicles
     // `,
     `SELECT *
-        FROM vehicles
-        JOIN design_and_exterior ON vehicles.id = design_and_exterior.vehicles_id`,
+        FROM vehicles`,
     (err, res) => {
       if (err) {
         console.log(`err: ${err}`);
