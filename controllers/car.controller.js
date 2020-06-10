@@ -30,11 +30,14 @@ const create = (req, res) => {
   });
   console.log("my car", car);
   Car.create(car, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message: err.message || "Some error occured while adding your car",
-      });
-    else res.send(data);
+    if (err) {
+      console.log(err);
+      // res.status(500).send({
+      //   message: err.message || "Some error occured while adding your car",
+      // });
+    } else {
+      res.send(data);
+    }
   });
 };
 
