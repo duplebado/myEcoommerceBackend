@@ -13,7 +13,7 @@ const dbConfig = require("../configuration/db.config.js");
 // });
 
 const connection = mysql.createConnection(
-  "mysql://b9189e7d369a7e:9655de26@us-cdbr-east-05.cleardb.net/heroku_421a606fcaca195?reconnect=true"
+  "mysql://b34586a81319ab:e0998272@us-cdbr-east-05.cleardb.net/heroku_b99275d8798bad9?reconnect=true"
 );
 
 connection.connect((error) => {
