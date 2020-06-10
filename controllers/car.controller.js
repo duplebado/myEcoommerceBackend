@@ -21,8 +21,8 @@ const create = (req, res) => {
     productPageCarousel_3: req.files[3].path,
     productPageCarousel_4: req.files[4].path,
     productPageCarousel_5: req.files[5].path,
-    category = req.body.category,
-    categoryLink = req.body.categoryLink,
+    category: req.body.category,
+    categoryLink: req.body.categoryLink,
     // category: req.body.category,
     // productPageCarousel_1: req.body.productPageCarousel_1,
     // productPageCarousel_2: req.body.productPageCarousel_2,
@@ -42,7 +42,6 @@ const create = (req, res) => {
     }
   });
 };
-
 
 const viewOne = (req, res) => {
   Car.viewOne(req.params.carId, (err, data) => {
