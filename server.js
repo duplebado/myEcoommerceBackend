@@ -39,7 +39,7 @@ app.use(cors(corsOptions));
 app.get("/", (req, res) => {
   res.send("Hi there, app is running!");
 });
-
+console.log("Hi");
 require("./routes/car.routes.js")(app);
 require("./routes/createAccount.routes.js")(app);
 require("./routes/login.routes.js")(app);
