@@ -115,5 +115,5 @@ Car.viewAll = (result) => {
 //     result(null, res);
 //   });
 // };
-
+console.log("Hello");
 module.exports = Car;

@@ -36,5 +36,5 @@ require("./routes/login.routes.js")(app);
 const PORT = process.env.PORT || 2500;
 
 app.listen(PORT, () => {
-  console.log("....running on port 2500");
+  console.log(`....running on port ${PORT}`);
 });
