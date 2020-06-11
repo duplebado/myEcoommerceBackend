@@ -26,7 +26,7 @@ const create = (req, res) => {
       });
       let salt = bcrypt.genSaltSync(10);
       user.password = bcrypt.hashSync(user.password, salt);
-      console.log("password", user.password);
+      // console.log("password", user.password);
 
       User.create(user, (err, data) => {
         if (err) {

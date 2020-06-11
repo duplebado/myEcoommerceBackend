@@ -14,7 +14,7 @@ const check = (req, res) => {
   };
 
   checkAttempt(attempt["email"], (err, data) => {
-    console.log(attempt["email"]);
+    // console.log(attempt["email"]);
     if (err)
       res.status(401).send({
         message: "invalid email login details",
@@ -33,9 +33,7 @@ const check = (req, res) => {
       bcrypt.compare(attempt["password"], pass).then(function (result) {
         if (result) {
           delete pass;
-          // console.log("this point HERE "+ data)
-          // console.log(pass)
-          console.log("FOR THIS PLACE " + JSON.stringify(data[0]));
+          // console.log("FOR THIS PLACE " + JSON.stringify(data[0]));
 
           const token = jwt.sign(userData, process.env.TOKEN_SECRET, {
             expiresIn: 3600, // 1min

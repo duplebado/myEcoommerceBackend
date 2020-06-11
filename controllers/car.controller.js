@@ -23,43 +23,37 @@ const create = (req, res) => {
     productPageCarousel_5: req.files[5].path,
     category: req.body.category,
     categoryLink: req.body.categoryLink,
-    // category: req.body.category,
-    // productPageCarousel_1: req.body.productPageCarousel_1,
-    // productPageCarousel_2: req.body.productPageCarousel_2,
-    // productPageCarousel_3: req.body.productPageCarousel_3,
-    // productPageCarousel_4: req.body.productPageCarousel_4,
-    // productPageCarousel_5: req.body.productPageCarousel_5
   });
   console.log("my car", car);
   Car.create(car, (err, data) => {
     if (err) {
       console.log(err);
-      // res.status(500).send({
-      //   message: err.message || "Some error occured while adding your car",
-      // });
+      res.status(500).send({
+        message: err.message || "Some error occured while adding your car",
+      });
     } else {
       res.send(data);
     }
   });
 };
 
-const viewOne = (req, res) => {
-  Car.viewOne(req.params.carId, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res
-          .status(404)
-          .send({ message: `Not found car with id ${req.params.carId}.` });
-      } else {
-        res.status(500).send({
-          message: `Error retrieving car with id ${req.params.carId}`,
-        });
-      }
-    } else {
-      res.send(data);
-    }
-  });
-};
+// const viewOne = (req, res) => {
+//   Car.viewOne(req.params.carId, (err, data) => {
+//     if (err) {
+//       if (err.kind === "not_found") {
+//         res
+//           .status(404)
+//           .send({ message: `Not found car with id ${req.params.carId}.` });
+//       } else {
+//         res.status(500).send({
+//           message: `Error retrieving car with id ${req.params.carId}`,
+//         });
+//       }
+//     } else {
+//       res.send(data);
+//     }
+//   });
+// };
 
 const viewAll = (req, res) => {
   Car.viewAll((err, data) => {
@@ -71,56 +65,53 @@ const viewAll = (req, res) => {
   });
 };
 
-const update = (req, res) => {
-  console.log(req);
-  // console.log("(((THIS IS REQUEST.BODY " + req.body + " REQUEST.BODY)))")
-  // console.log("(((THIS IS REQUEST.FILES " + req.files + " REQUEST.FILES)))")
+// const update = (req, res) => {
+//   console.log(req);
+//   if (!req.body) {
+//     res.status(400).send({ message: "Content can not be empty!" });
+//   }
 
-  if (!req.body) {
-    res.status(400).send({ message: "Content can not be empty!" });
-  }
+//   Car.update(req.params.carId, new Car(req.body), (err, data) => {
+//     if (err) {
+//       if (err.kind === "not_found") {
+//         res.status(404).send({
+//           message: `Not found Product with id ${req.params.carId}.`,
+//         });
+//         return;
+//       } else {
+//         res.status(500).send({
+//           message: "Error updating product with id " + req.params.carId,
+//         });
+//         return;
+//       }
+//     } else {
+//       res.send(data);
+//     }
+//   });
+// };
 
-  Car.update(req.params.carId, new Car(req.body), (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found Product with id ${req.params.carId}.`,
-        });
-        return;
-      } else {
-        res.status(500).send({
-          message: "Error updating product with id " + req.params.carId,
-        });
-        return;
-      }
-    } else {
-      res.send(data);
-    }
-  });
-};
-
-const remove = (req, res) => {
-  Car.remove(req.params.carId, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res
-          .status(404)
-          .send({ message: `Not found Product with id ${req.params.carId}.` });
-      } else {
-        res.status(500).send({
-          message: `Could not delete product with id ${req.params.carId}.`,
-        });
-      }
-    } else {
-      res.send({ message: `product was deleted successfully!` });
-    }
-  });
-};
+// const remove = (req, res) => {
+//   Car.remove(req.params.carId, (err, data) => {
+//     if (err) {
+//       if (err.kind === "not_found") {
+//         res
+//           .status(404)
+//           .send({ message: `Not found Product with id ${req.params.carId}.` });
+//       } else {
+//         res.status(500).send({
+//           message: `Could not delete product with id ${req.params.carId}.`,
+//         });
+//       }
+//     } else {
+//       res.send({ message: `product was deleted successfully!` });
+//     }
+//   });
+// };
 
 module.exports = {
   create,
-  viewOne,
+  // viewOne,
   viewAll,
-  update,
-  remove,
+  // update,
+  // remove,
 };
