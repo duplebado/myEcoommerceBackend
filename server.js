@@ -28,8 +28,8 @@ app.get("/", (req, res) => {
 });
 
 require("./routes/car.routes.js")(app);
-require("./routes/order.routes.js")(app);
-require("./routes/shoppingCart.router.js")(app);
+// require("./routes/order.routes.js")(app);
+// require("./routes/shoppingCart.router.js")(app);
 require("./routes/createAccount.routes.js")(app);
 require("./routes/login.routes.js")(app);
 
