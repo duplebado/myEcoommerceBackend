@@ -19,7 +19,6 @@ const Car = function (car) {
 };
 
 console.log("Hello");
-console.log("Bello");
 
 Car.create = (newCar, result) => {
   sql.query(`INSERT INTO vehicles SET?`, newCar, (err, res) => {
