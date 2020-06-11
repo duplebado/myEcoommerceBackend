@@ -6,9 +6,9 @@ module.exports = (app) => {
 
   app.get("/car", Car.viewAll);
 
-  app.get("/car/:carId", Car.viewOne);
+  // app.get("/car/:carId", Car.viewOne);
 
-  app.put("/car/:carId", Car.update);
+  // app.put("/car/:carId", Car.update);
 
-  app.delete("/car/:carId", Car.remove);
+  // app.delete("/car/:carId", Car.remove);
 };
